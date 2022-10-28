@@ -8,11 +8,12 @@ body{
 header {
     display: flex;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
 
     width: 375px;
     height: 80px;
     background: #FFFFFF;
-    border: solid 1px black;
     box-shadow: 0px 4px 250px 6px rgba(0,0,0,0.5);
 }
 header .logo img {
@@ -29,12 +30,33 @@ header .usuario img {
     color: rebeccapurple;
 }
 .sectionMSG{
+    margin-top: 45px;;
     height: 500px;
+}
+.sectionMSG .mensagemPostada {
+    display: flex;
+    height: 40px;
+}
+p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+.sectionMSG .mensagemPostada .tempo p {
+    color: #AAAAAA;
+}
+.sectionMSG .mensagemPostada .status p {
+    margin-left: 8px;
+    margin-right: 8px;
 }
 .sectionTEXT {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    bottom: 0;
     width: 375px;
     height: 80px;
     left: 0px;
