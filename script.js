@@ -1,6 +1,6 @@
 let usuario = {};
+let mensagensNaoTratadas = [];
 let mensagens = [];
-let mensagensTratadas = [];
 const sectionMSG = document.querySelector('.sectionMSG');
 
 function nomeUsuario() {
@@ -21,7 +21,8 @@ function processarMensagens() {
 };
 
 function recebeMensagens(res) {
-    mensagens = res.data;
+    mensagensNaoTratadas = res.data;
+    console.log(mensagens);
     renderizandoMensagem();
 };
 
@@ -71,6 +72,8 @@ function gerandoMensagem(mensagens) {
 
 function renderizandoMensagem() {
     
+    mensagens = mensagensNaoTratadas.filter(tratar); 
+
     mensagens.forEach(function(mensagens) {
         const mensagemRenderizada = gerandoMensagem(mensagens);
         sectionMSG.appendChild(mensagemRenderizada);
@@ -80,7 +83,7 @@ function renderizandoMensagem() {
 
 renderizandoMensagem() 
 
-function enviarMensagem( ) {
+function enviarMensagem() {
     const textoDigitada = document.querySelector('#mensagemDigitada')
     const amensagem = {
         from: usuario,
@@ -93,4 +96,10 @@ function enviarMensagem( ) {
         .post('https://mock-api.driven.com.br/api/v6/uol/messages', amensagem)
         .then(processarMensagens)
         .catch(window.location.reload());
+};
+
+function tratar (mensagensNaoTratadas) {
+	if (mensagensNaoTratadas.to === "Todos") {
+		return true;
+	}
 };
