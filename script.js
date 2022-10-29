@@ -80,6 +80,12 @@ function renderizandoMensagem() {
     });
 };
 
+function tratar (mensagensNaoTratadas) {
+	if (mensagensNaoTratadas.to === "Todos") {
+		return true;
+	}
+};
+
 renderizandoMensagem() 
 
 function enviarMensagem() {
@@ -95,10 +101,4 @@ function enviarMensagem() {
         .post('https://mock-api.driven.com.br/api/v6/uol/messages', aMensagem)
         .then(processarMensagens)
         .catch(window.location.reload());
-};
-
-function tratar (mensagensNaoTratadas) {
-	if (mensagensNaoTratadas.to === "Todos") {
-		return true;
-	}
 };
