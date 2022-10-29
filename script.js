@@ -22,7 +22,6 @@ function processarMensagens() {
 
 function recebeMensagens(res) {
     mensagensNaoTratadas = res.data;
-    console.log(mensagens);
     renderizandoMensagem();
 };
 
@@ -31,10 +30,10 @@ setInterval(function () {
         .post('https://mock-api.driven.com.br/api/v6/uol/status', usuario)
 }, 5000);
 
-// setInterval(function () {
-//     mensagens = [];
-//     processarMensagens();
-// }, 3000);
+setInterval(function () {
+    mensagens = [];
+    processarMensagens();
+}, 3000);
 
 function gerandoMensagem(mensagens) {
     const mensagemPostada = document.createElement('div');
@@ -85,7 +84,7 @@ renderizandoMensagem()
 
 function enviarMensagem() {
     const textoDigitada = document.querySelector('#mensagemDigitada')
-    const amensagem = {
+    const aMensagem = {
         from: usuario,
         to: "Todos",
         text: textoDigitada,
@@ -93,7 +92,7 @@ function enviarMensagem() {
     };
 
     axios
-        .post('https://mock-api.driven.com.br/api/v6/uol/messages', amensagem)
+        .post('https://mock-api.driven.com.br/api/v6/uol/messages', aMensagem)
         .then(processarMensagens)
         .catch(window.location.reload());
 };
