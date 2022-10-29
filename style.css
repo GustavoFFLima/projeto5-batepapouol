@@ -30,12 +30,13 @@ header .usuario img {
     color: rebeccapurple;
 }
 .sectionMSG{
-    margin-top: 45px;;
+    margin-top: 86px;
+    margin-bottom: 45px;
     height: 500px;
 }
 .sectionMSG .mensagemPostada {
     display: flex;
-    height: 40px;
+    min-height: 40px;
 }
 p {
     font-family: 'Roboto';
@@ -43,6 +44,7 @@ p {
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
+    
 }
 .sectionMSG .mensagemPostada .tempo p {
     color: #AAAAAA;
@@ -50,6 +52,15 @@ p {
 .sectionMSG .mensagemPostada .status p {
     margin-left: 8px;
     margin-right: 8px;
+}
+.entrouSaiu {
+    background-color: #DCDCDC;
+}
+.reservadas {
+    background-color: #FBDEDE;
+}
+.normais {
+    background-color: white;
 }
 .sectionTEXT {
     display: flex;

@@ -28,7 +28,12 @@ function recebeMensagens(res) {
 setInterval(function () {
     axios
         .post('https://mock-api.driven.com.br/api/v6/uol/status', usuario)
-}, 5000)
+}, 5000);
+
+// setInterval(function () {
+//     mensagens = [];
+//     processarMensagens();
+// }, 3000);
 
 function gerandoMensagem(mensagens) {
     const mensagemPostada = document.createElement('div');
@@ -39,7 +44,13 @@ function gerandoMensagem(mensagens) {
     const texto = document.createElement('div');
     const textoP = document.createElement('p'); 
 
-    mensagemPostada.className = 'mensagemPostada';
+    if(mensagens.type === "status") {
+        mensagemPostada.classList.add("entrouSaiu","mensagemPostada");
+    } else if(mensagens.type === "message") {
+        mensagemPostada.classList.add("normais","mensagemPostada");
+    } else {
+        mensagemPostada.classList.add("reservadas","mensagemPostada");
+    };
     tempo.className = 'tempo'; 
     status.className = 'status'; 
     texto.className = 'texto'; 
@@ -63,6 +74,23 @@ function renderizandoMensagem() {
     mensagens.forEach(function(mensagens) {
         const mensagemRenderizada = gerandoMensagem(mensagens);
         sectionMSG.appendChild(mensagemRenderizada);
+        sectionMSG.lastElementChild.scrollIntoView()
     });
 };
+
 renderizandoMensagem() 
+
+function enviarMensagem( ) {
+    const textoDigitada = document.querySelector('#mensagemDigitada')
+    const amensagem = {
+        from: usuario,
+        to: "Todos",
+        text: textoDigitada,
+        type: "message"
+    };
+
+    axios
+        .post('https://mock-api.driven.com.br/api/v6/uol/messages', amensagem)
+        .then(processarMensagens)
+        .catch(window.location.reload());
+};
