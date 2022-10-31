@@ -32,7 +32,7 @@ header .usuario img {
 .sectionMSG{
     margin-top: 86px;
     margin-bottom: 86px;
-    height: 500px;
+    max-height: 70%;
 }
 .sectionMSG .mensagemPostada {
     display: flex;

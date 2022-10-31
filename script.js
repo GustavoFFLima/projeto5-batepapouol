@@ -81,7 +81,7 @@ function renderizandoMensagem() {
 };
 
 function tratar (mensagensNaoTratadas) {
-	if (mensagensNaoTratadas.to === "Todos") {
+	if (mensagensNaoTratadas.to === "Todos" ||mensagensNaoTratadas.to === usuario.name) {
 		return true;
 	}
 };
@@ -90,15 +90,22 @@ renderizandoMensagem()
 
 function enviarMensagem() {
     const textoDigitada = document.querySelector('#mensagemDigitada')
+    let texto = textoDigitada. value;
     const aMensagem = {
-        from: usuario,
+        from: usuario.name,
         to: "Todos",
-        text: textoDigitada,
+        text: texto,
         type: "message"
     };
+    
 
     axios
         .post('https://mock-api.driven.com.br/api/v6/uol/messages', aMensagem)
-        .then(processarMensagens)
-        .catch(window.location.reload());
+        .then(function() {
+        mensagens = [];
+        processarMensagens();
+        })
+        .catch(function () {
+            window.location.reload()
+        });
 };
