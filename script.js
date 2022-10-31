@@ -46,17 +46,19 @@ function gerandoMensagem(mensagens) {
 
     if(mensagens.type === "status") {
         mensagemPostada.classList.add("entrouSaiu","mensagemPostada");
+        statusP.innerHTML = `<b>${mensagens.from}</b>`;
     } else if(mensagens.type === "message") {
         mensagemPostada.classList.add("normais","mensagemPostada");
+        statusP.innerHTML = `<b>${mensagens.from}</b> para <b>${mensagens.to}:</b>`;
     } else {
         mensagemPostada.classList.add("reservadas","mensagemPostada");
+        statusP.innerHTML = `<b>${mensagens.from}</b> para <b>${mensagens.to}:</b>`;
     };
     tempo.className = 'tempo'; 
     status.className = 'status'; 
     texto.className = 'texto'; 
 
     tempoP.innerHTML = mensagens.time;
-    statusP.innerHTML = `${mensagens.from} para ${mensagens.to}:`;
     textoP.innerHTML = mensagens.text;
 
     tempo.appendChild(tempoP);
