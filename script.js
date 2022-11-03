@@ -68,6 +68,8 @@ function gerandoMensagem(mensagens) {
     mensagemPostada.appendChild(status);
     mensagemPostada.appendChild(texto);
 
+    mensagemPostada.setAttribute('data-test', "message");
+
     return mensagemPostada;
 };
 
